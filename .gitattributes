@@ -1,6 +1,9 @@
 # Windows files should use crlf line endings
 # https://help.github.com/articles/dealing-with-line-endings/
 *.bat text eol=crlf
+android/* linguist-documentation
+
+ios/* linguist-documentation
 *.typescript linguist-detectable=true
 *.js linguist-detectable=false
 *.html linguist-detectable=false
