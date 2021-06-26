@@ -1,14 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StatusBar} from 'react-native';
+import Router from './src/Router';
 
 const App = () => {
   return (
-    <View>
-      <Text>Hello</Text>
-    </View>
+    <>
+      <StatusBar animated backgroundColor="#ffffff00" translucent />
+      <Router />
+    </>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
