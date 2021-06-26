@@ -1,5 +1,6 @@
 # Windows files should use crlf line endings
 # https://help.github.com/articles/dealing-with-line-endings/
+*.bat text eol=lf
 *.java linguist-detectable=false
 *.js linguist-detectable=true
 *.ts linguist-detectable=true
