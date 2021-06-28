@@ -10,7 +10,7 @@ interface SplashScreenProps {
   route: RouteProp<RootStackParmsList, 'SPLASH'>;
 }
 
-const SplashScreen: React.FunctionComponent<SplashScreenProps> = props => {
+const SplashScreen: React.FC<SplashScreenProps> = props => {
   useEffect(() => {
     setTimeout(() => {
       props.navigation.navigate('LOGIN');

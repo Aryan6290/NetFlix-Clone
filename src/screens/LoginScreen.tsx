@@ -5,7 +5,7 @@ import LoginHeader from '../components/LoginHeader';
 
 interface LoginScreenProps {}
 
-const LoginScreen: React.FunctionComponent<LoginScreenProps> = () => {
+const LoginScreen: React.FC<LoginScreenProps> = () => {
   return (
     <View style={styles.container}>
       <LoginHeader />
