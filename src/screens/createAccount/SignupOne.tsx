@@ -30,7 +30,9 @@ const SignupOne: React.FC<SignupOneProps> = props => {
             Netflix is personalised for you. Use your email and create a
             password to watch Netflix on any devices at any time.
           </Text>
-          <Pressable style={styles.btnStyle}>
+          <Pressable
+            onPress={() => props.navigation.navigate('SIGNUPTWO', {})}
+            style={styles.btnStyle}>
             <Text style={styles.btnTextStyle}>CONTINUE</Text>
           </Pressable>
         </View>

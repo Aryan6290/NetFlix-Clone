@@ -14,7 +14,7 @@ const Router: React.FunctionComponent<RouterProps> = () => {
   const Stack = createStackNavigator<RootStackParmsList>();
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode={'none'} initialRouteName="SIGNUPONE">
+      <Stack.Navigator headerMode={'none'} initialRouteName="SIGNUPTWO">
         <Stack.Screen name="SPLASH" component={SplashScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
         <Stack.Screen name="SIGNUPONE" component={SignupOne} />
