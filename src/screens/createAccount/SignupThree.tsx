@@ -19,7 +19,7 @@ const SignupThree: React.FC<SignupThreeProps> = props => {
       <View style={styles.contentBoxStyle}>
         <Icon name="checkmark-circle-outline" size={50} color="#F40612" />
         <Text style={styles.stepStyle}>
-          Step<Text style={{fontWeight: 'bold'}}> 2</Text> of{' '}
+          STEP<Text style={{fontWeight: 'bold'}}> 2</Text> OF{' '}
           <Text style={{fontWeight: 'bold'}}>3</Text>
         </Text>
         <Text style={styles.titleStyle}>Choose your plan.</Text>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   btnStyle: {
     marginTop: 20,
     width: '90%',
-    marginRight: 15,
+    marginRight: 25,
     backgroundColor: '#F40612',
     padding: 10,
     justifyContent: 'center',

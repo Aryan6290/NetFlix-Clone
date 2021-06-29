@@ -6,6 +6,7 @@ import SignupOne from './screens/createAccount/SignupOne';
 import SignupThree from './screens/createAccount/SignupThree';
 import SignupTwo from './screens/createAccount/SignupTwo';
 import LoginScreen from './screens/LoginScreen';
+import PlansScreen from './screens/PlansScreen';
 import SplashScreen from './screens/SplashScreen';
 
 interface RouterProps {}
@@ -14,12 +15,13 @@ const Router: React.FunctionComponent<RouterProps> = () => {
   const Stack = createStackNavigator<RootStackParmsList>();
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode={'none'} initialRouteName="SIGNUPTWO">
+      <Stack.Navigator headerMode={'none'} initialRouteName="PLANS">
         <Stack.Screen name="SPLASH" component={SplashScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
         <Stack.Screen name="SIGNUPONE" component={SignupOne} />
         <Stack.Screen name="SIGNUPTWO" component={SignupTwo} />
         <Stack.Screen name="SIGNUPTHREE" component={SignupThree} />
+        <Stack.Screen name="PLANS" component={PlansScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
