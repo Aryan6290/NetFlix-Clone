@@ -6,4 +6,4 @@ export type RootStackParmsList = {
   SIGNUPTHREE: SignupThreeProps;
 };
 export type SignupTwoProps = {};
-export type SignupThreeProps = () => {};
+export type SignupThreeProps = {};

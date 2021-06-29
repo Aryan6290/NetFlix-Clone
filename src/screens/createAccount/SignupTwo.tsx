@@ -40,7 +40,7 @@ const SignupTwo: React.FC<SignupTwoProps> = props => {
             <CustomLightTextInput placeholder="Password" />
           </View>
           <Pressable
-            onPress={() => props.navigation.navigate('SIGNUPTWO', {})}
+            onPress={() => props.navigation.navigate('SIGNUPTHREE', {})}
             style={styles.btnStyle}>
             <Text style={styles.btnTextStyle}>CONTINUE</Text>
           </Pressable>
