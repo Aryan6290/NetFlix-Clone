@@ -1,11 +1,17 @@
+import {RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import CustomLoginTextInput from '../components/CustomLoginTextInput';
 import LoginHeader from '../components/LoginHeader';
+import {RootStackParmsList} from '../data/params';
 
-interface LoginScreenProps {}
+interface LoginScreenProps {
+  navigation: StackNavigationProp<RootStackParmsList>;
+  route: RouteProp<RootStackParmsList, 'SIGNUPTWO'>;
+}
 
-const LoginScreen: React.FC<LoginScreenProps> = () => {
+const LoginScreen: React.FC<LoginScreenProps> = props => {
   return (
     <View style={styles.container}>
       <LoginHeader />
@@ -18,15 +24,18 @@ const LoginScreen: React.FC<LoginScreenProps> = () => {
         <Text style={{color: '#a9a9a9', fontSize: 16, marginBottom: 40}}>
           Need Help?
         </Text>
-        <Text
-          style={{
-            color: '#a9a9a9',
-            fontSize: 18,
-            marginBottom: 30,
-            fontWeight: 'bold',
-          }}>
-          New to Netflix? Sign up now.
-        </Text>
+        <Pressable onPress={() => props.navigation.navigate('SIGNUPONE')}>
+          <Text
+            style={{
+              color: '#a9a9a9',
+              fontSize: 18,
+              marginBottom: 30,
+              fontWeight: 'bold',
+            }}>
+            New to Netflix? Sign up now.
+          </Text>
+        </Pressable>
+
         <Text
           style={{
             color: '#a9a9a9',

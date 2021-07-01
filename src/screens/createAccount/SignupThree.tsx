@@ -55,7 +55,7 @@ const SignupThree: React.FC<SignupThreeProps> = props => {
           <Text style={styles.descStyle}>No ads and no extra fees. Ever.</Text>
         </View>
         <Pressable
-          onPress={() => props.navigation.navigate('SIGNUPTHREE', {})}
+          onPress={() => props.navigation.navigate('PLANS')}
           style={styles.btnStyle}>
           <Text style={styles.btnTextStyle}>SEE THE PLANS</Text>
         </Pressable>

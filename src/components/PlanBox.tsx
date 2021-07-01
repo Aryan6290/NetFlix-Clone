@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 20,
     bottom: 10,
-    left: 30,
+
     justifyContent: 'center',
     alignItems: 'center',
 

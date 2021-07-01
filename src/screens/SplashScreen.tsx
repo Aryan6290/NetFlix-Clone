@@ -19,7 +19,7 @@ const SplashScreen: React.FC<SplashScreenProps> = props => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/logo.jpg')}
+        source={require('../../assets/biglogo.jpg')}
         style={styles.imageStyle}
       />
     </View>
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   imageStyle: {
-    width: 120,
-    height: 120,
+    width: 200,
+    height: 200,
     alignSelf: 'center',
   },
 });
