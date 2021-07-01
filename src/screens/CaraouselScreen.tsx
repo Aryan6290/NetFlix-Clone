@@ -1,73 +1,90 @@
 /* eslint-disable react-native/no-inline-styles */
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
-import {ImageBackground, StyleSheet, Text} from 'react-native';
-import {Pressable} from 'react-native';
+import React, {useCallback, useRef, useState} from 'react';
+import {Dimensions, Pressable, StyleSheet, Text} from 'react-native';
 import {View} from 'react-native';
 import {StatusBar} from 'react-native';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 import CaraouselHeader from '../components/CaraouselHeader';
+import CaraouselItem from '../components/CaraouselItem';
 import {RootStackParmsList} from '../data/params';
-// import {useHeaderHeight} from '';
+import {CarouselList, CarouselModel} from '../models/CarouselModel';
 
 interface CaraouselScreenProps {
   navigation: StackNavigationProp<RootStackParmsList>;
   route: RouteProp<RootStackParmsList, 'CARAOUSEL'>;
 }
+interface RenderItemProps {
+  item: CarouselModel;
+  index: number;
+}
 
-const CaraouselScreen: React.FC<CaraouselScreenProps> = props => {
+const CaraouselScreen: React.FC<CaraouselScreenProps> = () => {
+  const [pageCount, setPageCount] = useState(0);
+  const itemWidth = Dimensions.get('screen').width;
+  const carouselRef = useRef<Carousel<CarouselModel>>(null);
+  const renderItem = useCallback(({item, index}: RenderItemProps) => {
+    return (
+      <CaraouselItem
+        index={index}
+        imageUrl={item.imageUrl.toString()}
+        subtitle={item.subtitle}
+        title={item.title}
+      />
+    );
+  }, []);
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={{flex: 1}}
-        source={require('../../assets/background.jpg')}>
-        <View style={{flex: 1, backgroundColor: 'rgba(0,0,0,0.3)'}}>
-          <CaraouselHeader />
-          <View
-            style={{
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              paddingTop: 50,
-              position: 'absolute',
-              bottom: 50,
-              left: 0,
-              right: 0,
+      <Carousel
+        ref={carouselRef}
+        data={CarouselList}
+        renderItem={renderItem}
+        sliderWidth={itemWidth}
+        itemWidth={itemWidth}
+        onSnapToItem={index => setPageCount(index)}
+      />
 
-              alignSelf: 'stretch',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text
-              style={{
-                alignSelf: 'center',
-                textAlign: 'center',
-                fontSize: 40,
-                color: '#fff',
-                fontWeight: 'bold',
-                paddingHorizontal: 40,
-              }}>
-              Unlimited entertainment one low price.
-            </Text>
-            <Text
-              style={{
-                alignSelf: 'center',
-                textAlign: 'center',
-                fontSize: 20,
-                color: '#fff',
-                marginTop: 20,
-                elevation: 10,
-                paddingHorizontal: 40,
-              }}>
-              Everything on Netflix , starting at just ₹ 199
-            </Text>
-          </View>
-        </View>
+      {/* <CaraouselItem
+        imageUrl="../../assets/background.jpg"
+        subtitle="Everything on Netflix , starting at just ₹ 199"
+        title="Unlimited entertainment one low price."
+      /> */}
+      <CaraouselHeader />
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 20,
+          width: Dimensions.get('screen').width,
+          alignSelf: 'stretch',
+          alignItems: 'center',
+        }}>
+        <Pagination
+          dotsLength={CarouselList.length}
+          activeDotIndex={pageCount}
+          containerStyle={{}}
+          dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            marginHorizontal: 8,
+            backgroundColor: 'rgba(255, 255, 255, 0.92)',
+          }}
+          inactiveDotStyle={
+            {
+              // Define styles for inactive dots here
+            }
+          }
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={0.6}
+        />
         <Pressable
-          onPress={() => props.navigation.navigate('SIGNUPONE')}
+          // onPress={() => props.navigation.navigate('SIGNUPONE')}
           style={styles.btnStyle}>
           <Text style={styles.btnTextStyle}>GET STARTED</Text>
         </Pressable>
-      </ImageBackground>
+      </View>
     </View>
   );
 };

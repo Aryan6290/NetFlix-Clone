@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {StatusBar} from 'react-native';
 interface CaraouselHeaderProps {
   onTap?: () => void;
 }
@@ -26,6 +27,8 @@ const CaraouselHeader: React.FC<CaraouselHeaderProps> = props => {
 };
 const styles = StyleSheet.create({
   headerStyle: {
+    position: 'absolute',
+    top: StatusBar.currentHeight! - 10,
     paddingTop: 5,
     // backgroundColor: '#333',
     // opacity: 0.4,
