@@ -17,7 +17,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
         contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
         numColumns={2}
         renderItem={({item}) => (
-          <View style={styles.itemStyle}>
+          <View key={item.index} style={styles.itemStyle}>
             {item.index > 3 ? (
               <FAB style={styles.fabStyle} icon="plus" />
             ) : (
@@ -27,7 +27,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
                   style={styles.imageStyle}
                   source={{uri: item.imageUrl}}
                 />
-                <Text style={{color: '#fff'}}>{item.name}</Text>
+                <Text style={styles.textStyle}>{item.name}</Text>
               </View>
             )}
           </View>
@@ -41,6 +41,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+  },
+  textStyle: {
+    color: '#fff',
+    paddingTop: 10,
+    fontSize: 16,
   },
   container: {
     flex: 1,
