@@ -6,6 +6,7 @@ export type RootStackParmsList = {
   SIGNUPTHREE: SignupThreeProps;
   PLANS: undefined;
   CARAOUSEL: undefined;
+  PROFILE: undefined;
 };
 export type SignupTwoProps = {};
 export type SignupThreeProps = {};
