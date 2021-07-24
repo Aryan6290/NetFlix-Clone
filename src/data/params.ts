@@ -7,6 +7,13 @@ export type RootStackParmsList = {
   PLANS: undefined;
   CARAOUSEL: undefined;
   PROFILE: undefined;
+  MAIN: undefined;
+};
+export type TabStackParamsList = {
+  HOME: undefined;
+  DOWNLOADS: undefined;
+  COMINGSOON: undefined;
+  SEARCH: undefined;
 };
 export type SignupTwoProps = {};
 export type SignupThreeProps = {};

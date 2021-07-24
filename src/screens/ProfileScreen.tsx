@@ -1,34 +1,49 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FlatList, Image} from 'react-native';
+import {FlatList, Image, Pressable} from 'react-native';
 import {Text} from 'react-native';
 import {StyleSheet, View} from 'react-native';
 
 import {profileList} from '../models/Profile';
 
 import {FAB} from 'react-native-paper';
-interface ProfileScreenProps {}
+import {RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParmsList} from '../data/params';
 
-const ProfileScreen: React.FC<ProfileScreenProps> = () => {
+interface ProfileScreenProps {
+  navigation: StackNavigationProp<RootStackParmsList>;
+  route: RouteProp<RootStackParmsList, 'PROFILE'>;
+}
+
+const ProfileScreen: React.FC<ProfileScreenProps> = props => {
   return (
     <View style={styles.container}>
       <FlatList
         data={[...profileList, {index: 4, name: '', imageUrl: ''}]}
         contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}
         numColumns={2}
+        // keyExtractor={(item, index) => data[index].name}
         renderItem={({item}) => (
           <View key={item.index} style={styles.itemStyle}>
             {item.index > 3 ? (
-              <FAB style={styles.fabStyle} icon="plus" />
+              <FAB
+                onPress={() => props.navigation.navigate('MAIN')}
+                key={item.index}
+                style={styles.fabStyle}
+                icon="plus"
+              />
             ) : (
-              <View style={styles.imageContainerStyle}>
+              <Pressable
+                onPress={() => props.navigation.navigate('MAIN')}
+                style={styles.imageContainerStyle}>
                 <Image
                   key={item.name}
                   style={styles.imageStyle}
                   source={{uri: item.imageUrl}}
                 />
                 <Text style={styles.textStyle}>{item.name}</Text>
-              </View>
+              </Pressable>
             )}
           </View>
         )}

@@ -7,6 +7,7 @@ import SignupOne from './screens/createAccount/SignupOne';
 import SignupThree from './screens/createAccount/SignupThree';
 import SignupTwo from './screens/createAccount/SignupTwo';
 import LoginScreen from './screens/LoginScreen';
+import MainScreen from './screens/MainScreen';
 import PlansScreen from './screens/PlansScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import SplashScreen from './screens/SplashScreen';
@@ -17,7 +18,7 @@ const Router: React.FunctionComponent<RouterProps> = () => {
   const Stack = createStackNavigator<RootStackParmsList>();
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode={'none'} initialRouteName="PROFILE">
+      <Stack.Navigator headerMode={'none'} initialRouteName="MAIN">
         <Stack.Screen name="SPLASH" component={SplashScreen} />
         <Stack.Screen name="LOGIN" component={LoginScreen} />
         <Stack.Screen name="SIGNUPONE" component={SignupOne} />
@@ -26,6 +27,7 @@ const Router: React.FunctionComponent<RouterProps> = () => {
         <Stack.Screen name="PLANS" component={PlansScreen} />
         <Stack.Screen name="CARAOUSEL" component={CaraouselScreen} />
         <Stack.Screen name="PROFILE" component={ProfileScreen} />
+        <Stack.Screen name="MAIN" component={MainScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
