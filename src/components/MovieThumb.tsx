@@ -3,6 +3,7 @@ import {Image, Pressable, StyleSheet} from 'react-native';
 
 interface MovieThumbProps {
   url: string;
+  onPress;
 }
 
 const MovieThumb: React.FunctionComponent<MovieThumbProps> = props => {
