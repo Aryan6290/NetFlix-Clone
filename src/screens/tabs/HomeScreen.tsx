@@ -7,18 +7,23 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import HomeHeader from '../../components/HomeHeader';
 import MovieThumb from '../../components/MovieThumb';
 import {Movie} from '../../models/MovieModel';
+import Modal from 'react-native-modal';
 import {
   getTopRatedMovies,
   getTrendingMovies,
   getTrendingTVshowsToday,
   getTrendingTVshowsWeekly,
+  getUpcomingMovies,
 } from '../../services/HomeServices';
+import DetailsModalContent from '../../components/modals/DetailsModalContent';
 
 interface HomeScreenProps {}
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
   const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
+  const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
   const [trendingTvShowsToday, setTrendingTvShowsToday] = useState<Movie[]>([]);
   const [trendingTvShowsWeekly, setTrendingTvShowsWeekly] = useState<Movie[]>(
     [],
@@ -45,6 +50,12 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     try {
       const movieData = await getTrendingTVshowsWeekly();
       setTrendingTvShowsWeekly(movieData.results);
+    } catch (error) {
+      console.log(error);
+    }
+    try {
+      const movieData = await getUpcomingMovies();
+      setUpcomingMovies(movieData.results);
     } catch (error) {
       console.log(error);
     }
@@ -96,6 +107,16 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
             />
           ))}
         </ScrollView>
+        <Text style={styles.titleStyle}>Upcoming Movies</Text>
+        <ScrollView horizontal style={styles.movieContainerStyle}>
+          {upcomingMovies.map((item, _i) => (
+            <MovieThumb
+              url={
+                'https://image.tmdb.org/t/p/w300/' + item.poster_path.toString()
+              }
+            />
+          ))}
+        </ScrollView>
       </ScrollView>
     </SafeAreaView>
   );
@@ -120,6 +141,10 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     backgroundColor: 'transparent',
     flexDirection: 'row',
+  },
+  modalSyle: {
+    justifyContent: 'flex-end',
+    margin: 0,
   },
 });
 export default HomeScreen;

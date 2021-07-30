@@ -35,3 +35,10 @@ export const getTrendingTVshowsWeekly = async () => {
   );
   return res.data;
 };
+export const getUpcomingMovies = async () => {
+  const res = await axios.get<MoviesResponse>(
+    baseUrl +
+      `/movie/upcoming?api_key=${keys.apiKey}&language=en-US&page=1&region=us`,
+  );
+  return res.data;
+};

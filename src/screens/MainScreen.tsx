@@ -9,8 +9,6 @@ import {RootStackParmsList, TabStackParamsList} from '../data/params';
 import ComingSoonScreen from './tabs/ComingSoonScreen';
 import DownloadsScreen from './tabs/DownloadsScreen';
 import HomeScreen from './tabs/HomeScreen';
-import SearchScreen from './tabs/SearchScreen';
-
 interface MainScreenProps {
   navigation: StackNavigationProp<RootStackParmsList>;
   route: RouteProp<RootStackParmsList, 'MAIN'>;
@@ -23,7 +21,7 @@ const MainScreen: React.FC<MainScreenProps> = () => {
         tabBarOptions={{
           showLabel: false,
           style: {
-            backgroundColor: '#000',
+            backgroundColor: '#1e1e1e',
             borderTopWidth: 0,
             height: 70,
           },
@@ -74,7 +72,7 @@ const MainScreen: React.FC<MainScreenProps> = () => {
             ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="SEARCH"
           component={SearchScreen}
           options={{
@@ -96,7 +94,7 @@ const MainScreen: React.FC<MainScreenProps> = () => {
               </View>
             ),
           }}
-        />
+        /> */}
         <Tab.Screen
           name="DOWNLOADS"
           component={DownloadsScreen}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet} from 'react-native';
+import {Image, Pressable, StyleSheet} from 'react-native';
 
 interface MovieThumbProps {
   url: string;
@@ -7,11 +7,13 @@ interface MovieThumbProps {
 
 const MovieThumb: React.FunctionComponent<MovieThumbProps> = props => {
   return (
-    <Image
-      style={styles.containerStyle}
-      resizeMode={'cover'}
-      source={{uri: props.url}}
-    />
+    <Pressable>
+      <Image
+        style={styles.containerStyle}
+        resizeMode={'cover'}
+        source={{uri: props.url}}
+      />
+    </Pressable>
   );
 };
 const styles = StyleSheet.create({
